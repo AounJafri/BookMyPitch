@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Ground</title>
+    <link rel="stylesheet" href="/static/css/book.css">
+</head>
+<body>
+    <div class="booking-container">
+        <h2>🏏 Book Your Ground</h2>
+        
+        <!-- Success & Error Messages -->
+        {{ if .Success }}
+        <div class="alert success">{{ .Success }}</div>
+        {{ end }}
+        
+        {{ if .Error }}
+        <div class="alert error">{{ .Error }}</div>
+        {{ end }}
+
+        <!-- Booking Form -->
+        <form action="/ground/book/{{ .GroundId }}" method="POST">
+            <label for="date">📅 Select Date:</label>
+            <input type="date" id="date" name="date" min="{{ .Today }}" required>
+            <div class="form-group">
+                <label for="timeSlot">Select Time Slot: <span class="required">*</span></label>
+                <select id="timeSlot" name="timeSlot" class="dropdown" required>
+                    <option value="" disabled selected>Select a time slot</option>
+                    <option value="10am-12pm">10 AM - 12 PM</option>
+                    <option value="12pm-2pm">12 PM - 2 PM</option>
+                    <option value="2pm-4pm">2 PM - 4 PM</option>
+                    <option value="4pm-6pm">4 PM - 6 PM</option>
+                    <option value="6pm-8pm">6 PM - 8 PM</option>
+                    <option value="8pm-10pm">8 PM - 10 PM</option>
+                    <option value="10pm-11pm">10 PM - 11 PM</option>
+                </select>
+            </div>
+            
+            
+            <button type="submit" class="btn">🚀 Confirm Booking</button>
+        </form>
+
+        <a href="/grounds" class="back-link">← Back to Grounds</a>
+    </div>
+</body>
+</html>

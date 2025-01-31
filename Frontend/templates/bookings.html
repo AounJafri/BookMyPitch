@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookings Management</title>
+  <link rel="stylesheet" href="/static/css/users.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div>
+          <a href="/grounds">Grounds</a>
+          <a href="/bookings">Bookings</a>
+          {{ if eq .userRole "Admin" }}
+            <a href="/users">Users</a>
+          {{ end }}
+        </div>
+        <a href="/" class="logout logout-btn">Logout</a>
+      </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        {{ if eq .userRole "Admin" }}
+      <h1>All Bookings</h1>
+      {{ else }}
+      <h1>My Bookings</h1>
+      {{ end }}
+
+      <!-- Table for Users -->
+       <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Ground Id</th>
+            <th>User Id</th>
+            <th>Booking Date</th>
+            <th>Timing</th>
+            <th>Status</th>
+            {{ if eq .userRole "Admin" }}
+            <th>Action</th>
+            {{ end }}
+          </tr>
+        </thead>
+        <tbody>
+          {{ range .Bookings }}
+          <tr>
+            <td>{{ .Id }}</td>
+            <td>{{ .GroundId }}</td>
+            <td>{{ .UserId }}</td>
+            <td>{{ .BookingDate }}</td>
+            <td>{{ .Timeslot }}</td>
+            <td>{{ .Status }}</td>
+            
+            {{ if eq $.userRole "Admin" }}
+            <td>
+              {{ if eq .Status "Approved" }}
+                <button class="approve-btn disabled">Approved</button>
+              {{ else }}
+                <form action="/admin/approve/booking/{{ .Id }}" method="POST">
+                  <button class="approve-btn" type="submit">Approve</button>
+                </form>
+              {{ end }}
+            </td>
+            {{ end }}
+          </tr>
+          {{ else }}
+          <tr>
+            <td colspan="7" style="text-align: center;">No bookings yet.</td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+       </div>
+    </div>
+  </div>
+</body>
+</html>

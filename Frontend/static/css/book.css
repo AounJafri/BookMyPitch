@@ -1,0 +1,152 @@
+/* Background with gradient effect */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* Container for booking form */
+.booking-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 420px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Heading */
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Date input field */
+input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ff758c;
+    border-radius: 8px;
+    outline: none;
+    background: #fff;
+    color: #333;
+    transition: all 0.3s;
+}
+
+input[type="date"]:hover {
+    border-color: #ff5a5f;
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #ff5a5f, #ff3d68);
+    transform: scale(1.05);
+}
+
+/* Success and error messages */
+.alert {
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.success {
+    background: #d4edda;
+    color: #155724;
+    border-left: 5px solid #28a745;
+}
+
+.error {
+    background: #f8d7da;
+    color: #721c24;
+    border-left: 5px solid #dc3545;
+}
+
+/* Back link */
+.back-link {
+    display: block;
+    margin-top: 15px;
+    color: #ff5a5f;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #ff3d68;
+}
+
+/* Animation for fade-in effect */
+
+.form-group {
+    margin-top: 25px;
+    text-align: left;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.required {
+    color: red;
+}
+
+.dropdown {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.dropdown:hover {
+    border-color: #0056b3;
+    background-color: #f1f1f1;
+}
+
+.dropdown:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 91, 187, 0.5);
+}

@@ -1,0 +1,14 @@
+# Ignore binaries
+*.exe
+*.out
+*.o
+*.a
+*.so
+*.dll
+
+# Ignore Go module files
+/vendor/
+go.sum
+go.mod
+
+.env

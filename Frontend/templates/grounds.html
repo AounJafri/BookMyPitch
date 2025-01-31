@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grounds</title>
+  <link rel="stylesheet" href="/static/css/grounds.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <a href="/grounds">Grounds</a>
+      <a href="/bookings">Bookings</a>
+      {{ if eq .userRole "Admin" }}
+      <a href="/users">Users</a>
+      {{ end }}
+    </div>
+    <a href="/" class="logout logout-btn">Logout</a>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <div class="content-header">
+      <h1>Grounds</h1>
+      {{ if eq .userRole "Admin" }}
+      <a href="/ground" class="add-ground">Add Ground</a>
+      {{ end }}
+    </div>
+
+    {{ if not .grounds }}
+      <p class="no-grounds">No grounds available at the moment.</p>
+    {{ else }}
+      <div class="grounds-grid">
+        {{ range .grounds }}
+        <div class="card">
+          <img src="{{ .Image }}" alt="{{ .Name }}">
+          <div class="card-content">
+            <h3 class="card-title">{{ .Name }}</h3>
+            <p class="card-location">{{ .Location }}</p>
+            <p class="card-price">Price: {{ .PricePerDay }} Rs.</p>
+            <div class="card-actions">
+              {{ if eq $.userRole "Admin" }}
+                <a href="/ground/delete/{{ .Id }}" class="delete-btn">Delete</a>
+              {{ else }}
+                <a href="/ground/book/{{ .Id }}" class="book-btn">Book</a>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</body>
+</html>

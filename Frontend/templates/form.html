@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{.Title}}</title>
+  <link rel="stylesheet" href="/static/css/form.css">
+</head>
+<body>
+  <div class="form-container">
+    <div class="form-header">
+      <h1>{{.Heading}}</h1>
+      <p>{{.Subheading}}</p>
+    </div>
+
+    {{if .Error}}
+    <div class="error-message">{{.Error}}</div>
+    {{end}}
+
+    <form action="{{.FormAction}}" method="POST">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+
+      {{if eq .Type "registration"}}
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" placeholder="Enter your age" required>
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" placeholder="Enter your location" required>
+      </div>
+      {{end}}
+
+      <div class="form-group">
+        <button type="submit">{{.ButtonLabel}}</button>
+      </div>
+    </form>
+
+    <div class="form-footer">
+      {{if eq .Type "login"}}
+      <p>Not registered yet? <a href="/register">Register here</a></p>
+      {{else if eq .Type "registration"}}
+      <p>Already have an account? <a href="/login">Login here</a></p>
+      {{end}}
+    </div>
+  </div>
+</body>
+</html>

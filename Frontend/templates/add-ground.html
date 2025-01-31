@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Ground</title>
+    <link rel="stylesheet" href="/static/css/add-ground.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Add New Ground</h2>
+        {{ if .Error }}
+            <p class="error-message">{{ .Error }}</p>
+        {{ end }}
+        <form action="/ground" method="POST">
+            <div class="form-group">
+                <label for="name">Ground Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" required>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price (Rs)</label>
+                <input type="number" id="price" name="price" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image URL</label>
+                <input type="url" id="image" name="image" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Add Ground</button>
+        </form>
+        <a href="/grounds" class="back-link">Back to Grounds</a>
+    </div>
+</body>
+</html>
