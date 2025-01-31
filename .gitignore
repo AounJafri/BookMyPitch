@@ -11,4 +11,4 @@
 go.sum
 go.mod
 
-.env
+**/.env
